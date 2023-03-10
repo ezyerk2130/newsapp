@@ -12,15 +12,17 @@ class FlatCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Image(image: AssetImage("assets/pexels-max-rahubovskiy-6587864.jpg"),),
-          const SizedBox(width: 5,),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end ,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('UI/UX Design'),
-              SizedBox(height: 10,),
-              Text('A Simple Trick For Creating')
-            ],
+          const SizedBox(width: 20,),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end ,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('UI/UX Design'),
+                SizedBox(height: 10,),
+                Text('A Simple Trick For Creating')
+              ],
+            ),
           ),
         ],
       ),

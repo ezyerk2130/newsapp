@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/widgets/card1.dart';
 import 'package:news/widgets/card2.dart';
 import 'package:news/widgets/flatcard.dart';
+
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
 
