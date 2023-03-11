@@ -20,7 +20,9 @@ class FlatCard extends StatelessWidget {
               children: const [
                 Text('UI/UX Design'),
                 SizedBox(height: 10,),
-                Text('A Simple Trick For Creating')
+                Text('A Simple Trick For Creating color pallets quickly.',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
