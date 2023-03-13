@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/pages/bookmarks.dart';
-//import 'package:news/pages/homepage.dart';
+import 'package:news/pages/homepage.dart';
 import 'package:news/theme.dart';
 import 'package:news/pages/cartegories.dart';
 import 'package:news/pages/profile.dart';

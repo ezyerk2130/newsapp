@@ -1,19 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:news/pages/bookmarks.dart';
+import 'package:news/pages/cartegories.dart';
+import 'package:news/pages/profile.dart';
 import 'package:news/widgets/card1.dart';
 import 'package:news/widgets/card2.dart';
 import 'package:news/widgets/flatcard.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
   @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  int _selectedIndex=0;
+  final List<Widget> _screens = const [    Homepage(),    Categories(),    Bookmarks(),    Profile(),  ];
+  void _onItemTapped(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+  @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body:Padding(
+    return Scaffold(
+      body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 72, 20, 0),
-        child:   Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children:   [
+          children: [
             const Text('Browse',style: TextStyle(fontWeight: FontWeight.w700),),
             const SizedBox(height: 20),
             const Text('Discover things of this world',style: TextStyle(fontWeight: FontWeight.w500),),
@@ -28,7 +43,7 @@ class Homepage extends StatelessWidget {
             const SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children:  const [
+              children: const [
                 FilledButton(onPressed: null, child: Text('Random')),
                 FilledButton.tonal(onPressed: null, child: Text('Sports')),
                 FilledButton.tonal(onPressed: null, child: Text('Gaming')),
@@ -48,33 +63,35 @@ class Homepage extends StatelessWidget {
             ),
             const SizedBox(height: 20,),
             Expanded(
-                child:ListView(
-                  children:  [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const[
-                        Text('Recommended for you'),
-                        Text('See All'),
-                      ],
-                    ),
-                    const SizedBox(height:10 ,),
-                    const FlatCard(),
-                    const SizedBox(height:10 ,),
-                    const FlatCard(),
-                  ],
-                ),
+              child:ListView(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text('Recommended for you'),
+                      Text('See All'),
+                    ],
+                  ),
+                  const SizedBox(height:10 ,),
+                  const FlatCard(),
+                  const SizedBox(height:10 ,),
+                  const FlatCard(),
+                ],
+              ),
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const<BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home,),label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.apps,color: Colors.grey,),label: 'Galley'),
           BottomNavigationBarItem(icon: Icon(Icons.bookmark_add_outlined,color:Colors.grey),label: 'Bookmark'),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,color:Colors.grey),label: 'Account'),
         ],
         selectedItemColor: Colors.indigo,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
